@@ -1,0 +1,7 @@
+# Build files
+/.idea
+*.iml
+
+# Misc files
+.*
+!.gitignore

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EpiDroid</string>
+    <string name="action_settings">設定</string>
+    <string name="connection_error">申し訳ありませんが、エラーが発生しました。</string>
+    <string name="drawer_close">クローズ</string>
+    <string name="drawer_open"> メニュー </string>
+    <string name="login_hint">ログイン</string>
+    <string name="login_error">ログインが正しくありません。</string>
+    <string name="password_error">パスワードが正しくありません</string>
+    <string name="password_hint">パスワード（UNIX）</string>
+    <string name="pref_save_password_title">パスワードの保存4</string>
+    <string name="sign_in_button">ログイン</string>
+    <string name="text_view_notifications">お知らせ</string>
+    <string name="text_view_timelog">時間をログ</string>
+    <string name="title_activity_main"> いらっしゃい </string>
+    <string name="try_connect">接続中 </string>
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EpiDroid</string>
+
+    <!--Login-->
+    <!--xml-->
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Password (Unix)</string>
+    <string name="sign_in_button">Sign in</string>
+    <string name="logo_content_description">Logo EpiDroid</string>
+    <!--activity-->
+    <string name="login_error">The login is incorrect</string>
+    <string name="password_error">The password is incorrect</string>
+    <string name="try_connect">Connecting…</string>
+    <string name="connection_error">Sorry, an error occurred.</string>
+
+    <string name="title_activity_main">Welcome</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Menu</string>
+    <string name="drawer_close">Close</string>
+
+    <!-- Main menu -->
+    <string-array name="drawer_items">
+        <item>Home</item>
+        <item>Planning</item>
+        <item>Modules</item>
+        <item>Marks</item>
+        <item>Projects</item>
+        <item>Logout</item>
+    </string-array>
+
+    <!-- PlanningListAdapter-->
+    <string name="inscription">S\'inscrire</string>
+    <string name="desincription">Se desinscrire</string>
+    <string name="enter_token">Entrer son token</string>
+    <string name="yes">oui</string>
+    <string name="no">non</string>
+    <string name="validate">Valider</string>
+    <string name="cancel">Annuler</string>
+    <string name="valid_inscription">ëtes vous sur de vouloir vous inscrire a : </string>
+    <string name="valid_desinscription">Etes vous sur de vouloir vous desinscrire de : </string>
+
+    <!-- Preferences -->
+    <string name="pref_save_password_title">Save password</string>
+    <string name="text_view_timelog">Log time:</string>
+    <string name="text_view_notifications">Notifications:</string>
+    <string name="calendar_icon_description" translatable="false">calendar icon</string>
+    <string name="Photo">Photo</string>
+    <string name="planning_subscribe_error">The subscribe has failed</string>
+    <string name="planning_subscribe_success">You are subscribed</string>
+    <string name="planning_unsubscribe_success">You are unsubscribed</string>
+    <string name="planning_unsubscribe_error">The unsubscribe has failed</string>
+    <string name="planning_subscribe_msg">Are you sure to subscribe to :</string>
+    <string name="planning_unsubscribe_msg">Are you sure to unsubscribe to :</string>
+    <string name="planning_token_msg">Enter your token :</string>
+    <string name="planning_token_success">Token valid</string>
+    <string name="planning_token_error">Token invalid</string>
+    <string name="new_button">New Button</string>
+    <string name="registered">registered</string>
+</resources>
