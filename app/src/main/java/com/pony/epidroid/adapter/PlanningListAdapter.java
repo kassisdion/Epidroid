@@ -29,11 +29,11 @@ import java.util.List;
 /**
  * Created by dusterherz on 02/02/15.
  */
-public class PlanningListAdapter extends BaseAdapter
-{
+public class PlanningListAdapter extends BaseAdapter {
 
     private final List<PlanningEntry> mPlanning;
     private final LayoutInflater mInflater;
+    private Context context = null;
     View.OnClickListener listenerInscription = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -74,7 +74,6 @@ public class PlanningListAdapter extends BaseAdapter
             dialogFragment.show(((FragmentActivity) context).getFragmentManager(), "TAG");
         }
     };
-    private Context context = null;
     View.OnClickListener listenerToken = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -113,8 +112,7 @@ public class PlanningListAdapter extends BaseAdapter
         }
     };
 
-    public PlanningListAdapter(List<PlanningEntry> planning, Context context)
-    {
+    public PlanningListAdapter(List<PlanningEntry> planning, Context context) {
         this.context = context;
         mPlanning = planning;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -131,18 +129,15 @@ public class PlanningListAdapter extends BaseAdapter
     }
 
     @Override
-    public long getItemId(int position)
-    {
+    public long getItemId(int position) {
         return position;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
-        if (convertView == null)
-        {
+        if (convertView == null) {
             holder = new ViewHolder();
             convertView = mInflater.inflate(R.layout.planning_list_content, null);
             holder.activity = (TextView) convertView.findViewById(R.id.list_planning_activity);
@@ -153,7 +148,8 @@ public class PlanningListAdapter extends BaseAdapter
             holder.button = (Button) convertView.findViewById(R.id.list_planning_btn);
             holder.position = position;
             convertView.setTag(holder);
-        } else {
+        }
+        else {
             holder = (ViewHolder) convertView.getTag();
         }
 
@@ -176,25 +172,27 @@ public class PlanningListAdapter extends BaseAdapter
             holder.button.setVisibility(View.VISIBLE);
             holder.button.setText(R.string.inscription);
             holder.button.setOnClickListener(listenerInscription);
-        } else if (isRegistered && currentActivity.allowToken) {
+        }
+        else if (isRegistered && currentActivity.allowToken) {
             holder.planningIcon.setImageResource(R.drawable.ic_token);
             holder.button.setVisibility(View.VISIBLE);
             holder.button.setText(R.string.enter_token);
             holder.button.setOnClickListener(listenerToken);
-        } else if (isRegistered) {
+        }
+        else if (isRegistered) {
             holder.planningIcon.setImageResource(R.drawable.ic_registered);
             holder.button.setVisibility(View.VISIBLE);
             holder.button.setText(R.string.desincription);
             holder.button.setOnClickListener(listenerDesincription);
-        } else {
+        }
+        else {
             holder.planningIcon.setImageResource(R.drawable.ic_calendar);
             holder.button.setVisibility(View.GONE);
         }
         return convertView;
     }
 
-    private class ViewHolder
-    {
+    private class ViewHolder {
         int position;
 
         TextView activity;

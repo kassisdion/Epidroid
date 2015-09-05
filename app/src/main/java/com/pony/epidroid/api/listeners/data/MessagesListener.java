@@ -10,19 +10,16 @@ import java.util.List;
 /**
  * Created by hervie_g on 1/27/15.
  */
-public abstract class MessagesListener extends ListListener<JSONObject>
-{
+public abstract class MessagesListener extends ListListener<JSONObject> {
     public abstract void onMessages(List<JSONObject> messages);
 
     @Override
-    public void onList(List<JSONObject> list)
-    {
+    public void onList(List<JSONObject> list) {
         this.onMessages(list);
     }
 
     @Override
-    protected JSONObject convertItem(Object item) throws JSONException
-    {
+    protected JSONObject convertItem(Object item) throws JSONException {
         return (JSONObject) item;
     }
 }

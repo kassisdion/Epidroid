@@ -11,20 +11,17 @@ import java.util.List;
 /**
  * Created by hervie_g on 1/27/15.
  */
-public abstract class PlanningListener extends ListListener<PlanningEntry>
-{
+public abstract class PlanningListener extends ListListener<PlanningEntry> {
     public abstract void onPlanning(List<PlanningEntry> planning);
 
     @Override
-    protected PlanningEntry convertItem(Object item) throws JSONException
-    {
+    protected PlanningEntry convertItem(Object item) throws JSONException {
         JSONObject object = (JSONObject) item;
         return new PlanningEntry(object);
     }
 
     @Override
-    public void onList(List<PlanningEntry> list)
-    {
+    public void onList(List<PlanningEntry> list) {
         this.onPlanning(list);
     }
 }

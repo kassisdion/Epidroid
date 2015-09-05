@@ -12,8 +12,7 @@ import java.util.Locale;
 /**
  * Created by hervie_g on 2/3/15.
  */
-public class PlanningFragment extends TabsFragment
-{
+public class PlanningFragment extends TabsFragment {
     private List<Tab> tabs = null;
 
     private static PlanningTabFragment createTabFragment(Calendar start, Calendar end,
@@ -30,8 +29,7 @@ public class PlanningFragment extends TabsFragment
     }
 
     @Override
-    protected List<Tab> getTabs()
-    {
+    protected List<Tab> getTabs() {
         if (this.tabs == null) {
             this.tabs = new ArrayList<>();
 

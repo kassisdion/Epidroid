@@ -10,16 +10,14 @@ import java.util.List;
 /**
  * Created by hervie_g on 1/26/15.
  */
-public class Infos
-{
+public class Infos {
     public final Board board;
     public final JSONObject current;
     public final List<JSONObject> history;
     public final JSONObject infos;
     public final String ip;
 
-    public Infos(JSONObject object) throws JSONException
-    {
+    public Infos(JSONObject object) throws JSONException {
         this.board = new Board(object.getJSONObject("board"));
         this.current = object.getJSONObject("current");
         this.history = JSONHelper.arrayToList(object.optJSONArray("history"));
@@ -27,8 +25,7 @@ public class Infos
         this.ip = object.getString("ip");
     }
 
-    public class Board
-    {
+    public class Board {
         public final List<JSONObject> activities;
         public final List<JSONObject> modules;
         public final List<JSONObject> marks;
@@ -37,8 +34,7 @@ public class Infos
         public final List<JSONObject> susies;
         public final List<JSONObject> tickets;
 
-        public Board(JSONObject object) throws JSONException
-        {
+        public Board(JSONObject object) throws JSONException {
             this.activities = JSONHelper.arrayToList(object.optJSONArray("activites"));
             this.modules = JSONHelper.arrayToList(object.optJSONArray("modules"));
             this.marks = JSONHelper.arrayToList(object.optJSONArray("notes"));

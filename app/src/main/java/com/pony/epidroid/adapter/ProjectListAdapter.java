@@ -53,7 +53,8 @@ public class ProjectListAdapter extends BaseAdapter {
             holder.registered = (ImageView) convertView.findViewById(R.id.list_project_registered);
             holder.position = position;
             convertView.setTag(holder);
-        } else {
+        }
+        else {
             holder = (ViewHolder) convertView.getTag();
         }
 
@@ -63,7 +64,8 @@ public class ProjectListAdapter extends BaseAdapter {
         holder.titleModule.setText(currentEntry.titleModule);
         if (currentEntry.registered) {
             holder.registered.setImageResource(R.drawable.ic_registered);
-        } else {
+        }
+        else {
             holder.registered.setImageResource(R.drawable.ic_not_registered);
         }
         return convertView;

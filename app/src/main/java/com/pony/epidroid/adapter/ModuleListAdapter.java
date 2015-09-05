@@ -54,7 +54,8 @@ public class ModuleListAdapter extends BaseAdapter {
             //holder.semester = (TextView) convertView.findViewById();
             holder.position = position;
             convertView.setTag(holder);
-        } else {
+        }
+        else {
             holder = (ViewHolder) convertView.getTag();
         }
 

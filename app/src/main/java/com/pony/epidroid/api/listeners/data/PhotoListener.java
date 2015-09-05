@@ -8,13 +8,11 @@ import org.json.JSONObject;
 /**
  * Created by hervie_g on 1/27/15.
  */
-public abstract class PhotoListener extends BaseListener
-{
+public abstract class PhotoListener extends BaseListener {
     public abstract void onPhoto(String url);
 
     @Override
-    public void onObject(JSONObject object) throws JSONException
-    {
+    public void onObject(JSONObject object) throws JSONException {
         this.onPhoto(object.getString("url"));
     }
 }

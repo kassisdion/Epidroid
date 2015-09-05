@@ -3,8 +3,7 @@ package com.pony.epidroid.api;
 /**
  * Created by hervie_g on 1/26/15.
  */
-public class ApiConstants
-{
+public class ApiConstants {
     public final static String BASE_URL = "https://epitech-api.herokuapp.com";
 
     public final static String LOGIN_PATH = "/login";
@@ -25,12 +24,6 @@ public class ApiConstants
     public final static String PHOTO_PATH = "/photo";
     public final static String TOKEN_PATH = "/token";
     public final static String TROMBI_PATH = "/trombi";
-
-    public static String makeUrl(String path)
-    {
-        return BASE_URL + path;
-    }
-
     public final static String LOGIN_URL = makeUrl(LOGIN_PATH);
     public final static String INFOS_URL = makeUrl(INFOS_PATH);
     public final static String PLANNING_URL = makeUrl(PLANNING_PATH);
@@ -49,4 +42,8 @@ public class ApiConstants
     public final static String PHOTO_URL = makeUrl(PHOTO_PATH);
     public final static String TOKEN_URL = makeUrl(TOKEN_PATH);
     public final static String TROMBI_URL = makeUrl(TROMBI_PATH);
+
+    public static String makeUrl(String path) {
+        return BASE_URL + path;
+    }
 }

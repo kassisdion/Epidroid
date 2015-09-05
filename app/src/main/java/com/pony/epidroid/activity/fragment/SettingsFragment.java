@@ -8,11 +8,9 @@ import com.pony.epidroid.R;
 /**
  * Created by faisant on 21/01/15.
  */
-public class SettingsFragment extends PreferenceFragment
-{
+public class SettingsFragment extends PreferenceFragment {
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.preferences);

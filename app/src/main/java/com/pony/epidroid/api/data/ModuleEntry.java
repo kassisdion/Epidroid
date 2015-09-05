@@ -6,8 +6,7 @@ import org.json.JSONObject;
 /**
  * Created by dusterherz on 03/02/15.
  */
-public class ModuleEntry
-{
+public class ModuleEntry {
     public final String start;
     public final int scholarYear;
     public final String codeModule;
@@ -19,8 +18,7 @@ public class ModuleEntry
     public final int semester;
     public final JSONObject other;
 
-    public ModuleEntry(JSONObject object) throws JSONException
-    {
+    public ModuleEntry(JSONObject object) throws JSONException {
         this.title = object.getString("title");
         this.start = object.getString("date_ins");
         this.scholarYear = object.getInt("scolaryear");

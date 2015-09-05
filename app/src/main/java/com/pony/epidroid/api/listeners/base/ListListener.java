@@ -11,20 +11,17 @@ import java.util.List;
 /**
  * Created by hervie_g on 1/27/15.
  */
-public abstract class ListListener<T> extends BaseListener
-{
+public abstract class ListListener<T> extends BaseListener {
     public abstract void onList(List<T> list);
 
     protected abstract T convertItem(Object item) throws JSONException;
 
     @Override
-    public void onArray(JSONArray array) throws JSONException
-    {
+    public void onArray(JSONArray array) throws JSONException {
         List<Object> source = JSONHelper.arrayToList(array);
         List<T> list = new ArrayList<>(source.size());
 
-        for (Object item : source)
-        {
+        for (Object item : source) {
             list.add(this.convertItem(item));
         }
 

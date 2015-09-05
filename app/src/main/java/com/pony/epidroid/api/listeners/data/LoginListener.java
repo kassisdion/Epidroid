@@ -8,13 +8,11 @@ import org.json.JSONObject;
 /**
  * Created by hervie_g on 1/26/15.
  */
-public abstract class LoginListener extends BaseListener
-{
+public abstract class LoginListener extends BaseListener {
     public abstract void onSuccess(String token);
 
     @Override
-    public void onObject(JSONObject object) throws JSONException
-    {
+    public void onObject(JSONObject object) throws JSONException {
         String token = object.getString("token");
 
         this.onSuccess(token);

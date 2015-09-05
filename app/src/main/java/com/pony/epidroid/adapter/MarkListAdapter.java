@@ -51,7 +51,8 @@ public class MarkListAdapter extends BaseAdapter {
             holder.value = (TextView) convertView.findViewById(R.id.list_marks_date);
             holder.position = position;
             convertView.setTag(holder);
-        } else {
+        }
+        else {
             holder = (ViewHolder) convertView.getTag();
         }
 

@@ -21,29 +21,22 @@ import java.util.List;
 /**
  * Created by faisan_f on 03/02/2015.
  */
-public class ProjectFragment extends android.support.v4.app.Fragment
-{
+public class ProjectFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState)
-    {
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_project, container, false);
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
-    {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         final ListView listView = (ListView) view.findViewById(R.id.list_project);
-        Api.getProjects(new ProjectsListener()
-        {
+        Api.getProjects(new ProjectsListener() {
             @Override
-            public void onProjects(List<ProjectEntry> list)
-            {
-                list = CollectionsUtils.filter(list, new CollectionsUtils.Filter<ProjectEntry>()
-                {
+            public void onProjects(List<ProjectEntry> list) {
+                list = CollectionsUtils.filter(list, new CollectionsUtils.Filter<ProjectEntry>() {
                     @Override
-                    public boolean check(ProjectEntry item)
-                    {
+                    public boolean check(ProjectEntry item) {
                         return !item.project.equals("null");
                     }
                 });
@@ -52,8 +45,7 @@ public class ProjectFragment extends android.support.v4.app.Fragment
             }
 
             @Override
-            public void onError(VolleyError error)
-            {
+            public void onError(VolleyError error) {
                 error.printStackTrace();
                 Debug.showToast(getActivity(), "Can't load");
             }
