@@ -5,9 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by faisan_f on 03/02/2015.
- */
 public class DateManager {
     private final static String dateFormat = "yyyy-MM-dd HH:mm:ss";
     private int month;

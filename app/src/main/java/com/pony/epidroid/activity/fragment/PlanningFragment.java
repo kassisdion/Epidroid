@@ -9,9 +9,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by hervie_g on 2/3/15.
- */
 public class PlanningFragment extends TabsFragment {
     private List<Tab> tabs = null;
 

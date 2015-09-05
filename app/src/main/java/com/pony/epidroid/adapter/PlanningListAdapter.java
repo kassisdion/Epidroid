@@ -26,9 +26,6 @@ import com.pony.epidroid.utils.SimpleDialogFragment;
 
 import java.util.List;
 
-/**
- * Created by dusterherz on 02/02/15.
- */
 public class PlanningListAdapter extends BaseAdapter {
 
     private final List<PlanningEntry> mPlanning;
@@ -41,11 +38,11 @@ public class PlanningListAdapter extends BaseAdapter {
             TextView activityTextView = (TextView) parent.findViewById(R.id.list_planning_activity);
 
             SimpleDialogFragment dialogFragment = new SimpleDialogFragment();
-            dialogFragment.setPositivBtnTxt(context.getString(R.string.yes));
-            dialogFragment.setNegativBtnTxt(context.getString(R.string.no));
-            dialogFragment.setBoxName((context.getString(R.string.inscription)));
-            dialogFragment.setMessage(context.getString(R.string.valid_inscription) + activityTextView.getText());
-            dialogFragment.setPositivBtnListener(new SimpleDialogFragment.PositivBtnListener() {
+            SimpleDialogFragment.setPositivBtnTxt(context.getString(R.string.yes));
+            SimpleDialogFragment.setNegativBtnTxt(context.getString(R.string.no));
+            SimpleDialogFragment.setBoxName((context.getString(R.string.inscription)));
+            SimpleDialogFragment.setMessage(context.getString(R.string.valid_inscription) + activityTextView.getText());
+            SimpleDialogFragment.setPositivBtnListener(new SimpleDialogFragment.PositivBtnListener() {
                 @Override
                 public void onResponse() {
                     //Faire la requete pour s'inscrire
@@ -61,11 +58,11 @@ public class PlanningListAdapter extends BaseAdapter {
             TextView activityTextView = (TextView) parent.findViewById(R.id.list_planning_activity);
 
             SimpleDialogFragment dialogFragment = new SimpleDialogFragment();
-            dialogFragment.setPositivBtnTxt(context.getString(R.string.yes));
-            dialogFragment.setNegativBtnTxt(context.getString(R.string.no));
-            dialogFragment.setBoxName((context.getString(R.string.desincription)));
-            dialogFragment.setMessage(context.getString(R.string.valid_desinscription) + activityTextView.getText());
-            dialogFragment.setPositivBtnListener(new SimpleDialogFragment.PositivBtnListener() {
+            SimpleDialogFragment.setPositivBtnTxt(context.getString(R.string.yes));
+            SimpleDialogFragment.setNegativBtnTxt(context.getString(R.string.no));
+            SimpleDialogFragment.setBoxName((context.getString(R.string.desincription)));
+            SimpleDialogFragment.setMessage(context.getString(R.string.valid_desinscription) + activityTextView.getText());
+            SimpleDialogFragment.setPositivBtnListener(new SimpleDialogFragment.PositivBtnListener() {
                 @Override
                 public void onResponse() {
                     //Faire la requete pour ce desinscrire

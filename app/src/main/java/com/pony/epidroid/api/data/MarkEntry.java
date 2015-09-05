@@ -2,9 +2,6 @@ package com.pony.epidroid.api.data;
 
 import org.json.JSONObject;
 
-/**
- * Created by Aude on 03/02/15.
- */
 public class MarkEntry {
     public final String title;
     public final String finalNote;

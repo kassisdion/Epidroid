@@ -17,9 +17,6 @@ import com.pony.epidroid.utils.Debug;
 
 import java.util.List;
 
-/**
- * Created by dusterherz on 03/02/15.
- */
 public class MarksFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,

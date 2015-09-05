@@ -1,9 +1,5 @@
 package com.pony.epidroid.utils;
 
-/**
- * Created by faisan_f on 03/02/2015.
- */
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -67,12 +63,12 @@ public class SimpleDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    public static interface PositivBtnListener {
-        public void onResponse();
+    public interface PositivBtnListener {
+        void onResponse();
     }
 
-    public static interface NegativBtnListener {
-        public void onResponse();
+    public interface NegativBtnListener {
+        void onResponse();
     }
 
 }

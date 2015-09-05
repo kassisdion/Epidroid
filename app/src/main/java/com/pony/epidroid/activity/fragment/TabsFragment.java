@@ -16,9 +16,6 @@ import com.pony.epidroid.view.SlidingTabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by hervie_g on 1/22/15.
- */
 public abstract class TabsFragment extends Fragment {
     protected List<Tab> getTabs() {
         return new ArrayList<>();

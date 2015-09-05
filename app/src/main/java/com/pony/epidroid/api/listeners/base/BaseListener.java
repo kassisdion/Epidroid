@@ -11,9 +11,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
 public abstract class BaseListener implements Response.Listener<ApiResponse>, Response.ErrorListener {
     public ApiRequest request = null;
 
@@ -62,13 +59,8 @@ public abstract class BaseListener implements Response.Listener<ApiResponse>, Re
         }
 
         private static String buildMessage(String format, String expected) {
-            StringBuilder buf = new StringBuilder();
 
-            buf.append("Expected format `").append(expected);
-            buf.append("`, got `").append(format);
-            buf.append("`");
-
-            return buf.toString();
+            return "Expected format `" + expected + "`, got `" + format + "`";
         }
     }
 }

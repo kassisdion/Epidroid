@@ -4,9 +4,6 @@ import android.content.Context;
 
 import com.pony.epidroid.preferences.PreferencesManager;
 
-/**
- * Created by faisan_f on 03/02/2015.
- */
 public class PreferencesManagerHelper {
     public static boolean putString(Context context, String tag, String data) {
         return new PreferencesManager(context).put(tag, data);

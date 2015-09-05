@@ -8,9 +8,6 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by hervie_g on 1/27/15.
- */
 public abstract class ListListener<T> extends BaseListener {
     public abstract void onList(List<T> list);
 

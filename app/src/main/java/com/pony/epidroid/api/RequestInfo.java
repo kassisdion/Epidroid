@@ -5,18 +5,16 @@ import com.pony.epidroid.api.listeners.base.BaseListener;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
 public class RequestInfo {
     public ApiRequest.Method method;
     public String url;
-    public Map<String, String> params = new HashMap<>();
-    public Integer timeout = null;
+    public Map<String, String> params;
+    public Integer timeout;
 
     public RequestInfo(ApiRequest.Method method, String url) {
         this.url = url;
         this.method = method;
+        params = new HashMap<>();
     }
 
     public void setParam(String key, String value) {

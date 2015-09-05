@@ -3,9 +3,6 @@ package com.pony.epidroid.api;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
 public class ApiResponse {
     public JSONObject object = null;
     public JSONArray array = null;

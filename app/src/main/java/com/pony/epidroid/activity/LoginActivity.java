@@ -19,7 +19,6 @@ import com.pony.epidroid.preferences.PreferencesConstants;
 import com.pony.epidroid.preferences.PreferencesManager;
 import com.pony.epidroid.utils.ActivityHelper;
 
-
 public class LoginActivity extends Activity {
     private static EditText loginTextView = null;
     private static EditText passwordTextView = null;

@@ -4,9 +4,6 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-/**
- * Created by faisant on 21/01/15.
- */
 public class Debug {
     private final static String TAG = "EpiDroid";
     private final static boolean DEBUG = true;

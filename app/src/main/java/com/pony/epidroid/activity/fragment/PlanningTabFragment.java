@@ -23,9 +23,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by faisant on 21/01/15.
- */
 public class PlanningTabFragment extends Fragment {
     public final static String ARG_START = "planning_start";
     public final static String ARG_END = "planning_end";

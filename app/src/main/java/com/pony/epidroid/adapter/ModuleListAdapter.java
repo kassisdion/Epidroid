@@ -12,9 +12,6 @@ import com.pony.epidroid.api.data.ModuleEntry;
 
 import java.util.List;
 
-/**
- * Created by Aude on 03/02/15.
- */
 public class ModuleListAdapter extends BaseAdapter {
 
     private final LayoutInflater mInflater;

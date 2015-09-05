@@ -7,9 +7,6 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
 public class Infos {
     public final Board board;
     public final JSONObject current;

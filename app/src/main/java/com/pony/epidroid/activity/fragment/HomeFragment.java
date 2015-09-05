@@ -26,9 +26,6 @@ import org.json.JSONException;
 
 import java.io.InputStream;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
 public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,

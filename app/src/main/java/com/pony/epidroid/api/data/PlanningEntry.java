@@ -2,9 +2,6 @@ package com.pony.epidroid.api.data;
 
 import org.json.JSONObject;
 
-/**
- * Created by hervie_g on 2/3/15.
- */
 public final class PlanningEntry {
     public final String start;
     public final String end;

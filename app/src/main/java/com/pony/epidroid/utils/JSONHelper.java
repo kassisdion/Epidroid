@@ -6,9 +6,6 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by hervie_g on 1/27/15.
- */
 public class JSONHelper {
     public static <T> List<T> arrayToList(JSONArray array) throws JSONException {
         List<T> list = new ArrayList<>(array != null ? array.length() : 0);

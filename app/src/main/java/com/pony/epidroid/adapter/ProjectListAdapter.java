@@ -13,9 +13,6 @@ import com.pony.epidroid.api.data.ProjectEntry;
 
 import java.util.List;
 
-/**
- * Created by faisan_f on 03/02/2015.
- */
 public class ProjectListAdapter extends BaseAdapter {
 
     private final LayoutInflater mInflater;

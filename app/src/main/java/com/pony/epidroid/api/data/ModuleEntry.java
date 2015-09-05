@@ -3,9 +3,6 @@ package com.pony.epidroid.api.data;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by dusterherz on 03/02/15.
- */
 public class ModuleEntry {
     public final String start;
     public final int scholarYear;

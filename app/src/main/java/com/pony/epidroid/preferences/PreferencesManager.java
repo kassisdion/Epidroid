@@ -5,9 +5,6 @@ import android.content.SharedPreferences;
 
 import java.util.Set;
 
-/**
- * Created by faisan_f on 03/02/2015.
- */
 public class PreferencesManager {
     private final SharedPreferences prefs;
 

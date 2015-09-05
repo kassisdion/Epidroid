@@ -19,9 +19,6 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
 public class ApiRequest extends Request<ApiResponse> {
     private BaseListener listener;
     private Map<String, String> bodyParams = new HashMap<>();
@@ -136,7 +133,7 @@ public class ApiRequest extends Request<ApiResponse> {
         return null;
     }
 
-    public static enum Method {
+    public enum Method {
         GET(Request.Method.GET),
         POST(Request.Method.POST),
         DELETE(Request.Method.DELETE),
@@ -158,12 +155,8 @@ public class ApiRequest extends Request<ApiResponse> {
         }
 
         private static String buildErrorMessage(JSONObject error) {
-            StringBuilder buf = new StringBuilder();
 
-            buf.append("API error (code ").append(error.optInt("code"));
-            buf.append("): ").append(error.optString("message"));
-
-            return buf.toString();
+            return "API error (code " + error.optInt("code") + "): " + error.optString("message");
         }
     }
 }

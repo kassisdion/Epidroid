@@ -29,9 +29,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
 public class Api {
     public final static String TAG = "EpitechApi";
     private static RequestQueue queue = null;
@@ -299,7 +296,7 @@ public class Api {
         doRequest(info, listener);
     }
 
-    public static enum SusieStatus {
+    public enum SusieStatus {
         ALL,
         FREE,
         REGISTERED,

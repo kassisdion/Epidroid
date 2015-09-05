@@ -3,9 +3,6 @@ package com.pony.epidroid.api.data;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by faisan_f on 03/02/2015.
- */
 public class ProjectEntry {
     public final String project;
     public final String titleModule;

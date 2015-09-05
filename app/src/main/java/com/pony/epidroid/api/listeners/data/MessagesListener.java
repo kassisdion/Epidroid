@@ -7,9 +7,6 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-/**
- * Created by hervie_g on 1/27/15.
- */
 public abstract class MessagesListener extends ListListener<JSONObject> {
     public abstract void onMessages(List<JSONObject> messages);
 
