@@ -12,9 +12,6 @@ import com.pony.epidroid.api.data.ModuleEntry;
 
 import java.util.List;
 
-/**
- * Created by Aude on 03/02/15.
- */
 public class ModuleListAdapter extends BaseAdapter {
 
     private final LayoutInflater mInflater;
@@ -54,7 +51,8 @@ public class ModuleListAdapter extends BaseAdapter {
             //holder.semester = (TextView) convertView.findViewById();
             holder.position = position;
             convertView.setTag(holder);
-        } else {
+        }
+        else {
             holder = (ViewHolder) convertView.getTag();
         }
 

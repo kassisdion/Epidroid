@@ -2,11 +2,7 @@ package com.pony.epidroid.api.data;
 
 import org.json.JSONObject;
 
-/**
- * Created by hervie_g on 2/3/15.
- */
-public final class PlanningEntry
-{
+public final class PlanningEntry {
     public final String start;
     public final String end;
     public final Integer scholarYear;
@@ -23,8 +19,7 @@ public final class PlanningEntry
 
     public final JSONObject other;
 
-    public PlanningEntry(JSONObject object)
-    {
+    public PlanningEntry(JSONObject object) {
         this.actiTitle = object.optString("acti_title");
         this.start = object.optString("start");
         this.end = object.optString("end");

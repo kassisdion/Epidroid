@@ -22,7 +22,6 @@ import com.pony.epidroid.activity.fragment.MarksFragment;
 import com.pony.epidroid.activity.fragment.ModuleFragment;
 import com.pony.epidroid.activity.fragment.PlanningFragment;
 import com.pony.epidroid.activity.fragment.ProjectFragment;
-import com.pony.epidroid.activity.fragment.SettingsFragment;
 import com.pony.epidroid.api.Api;
 import com.pony.epidroid.api.ApiData;
 import com.pony.epidroid.utils.ActivityHelper;
@@ -50,22 +49,18 @@ public class MainMenuActivity extends FragmentActivity implements ListView.OnIte
         drawerList.setOnItemClickListener(this);
 
         ActionBar bar = getActionBar();
-        if (bar != null)
-        {
+        if (bar != null) {
             bar.setDisplayHomeAsUpEnabled(true);
             bar.setHomeButtonEnabled(true);
         }
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close)
-        {
-            public void onDrawerClosed(View view)
-            {
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
+            public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 invalidateOptionsMenu();
             }
 
-            public void onDrawerOpened(View drawerView)
-            {
+            public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 invalidateOptionsMenu();
             }
@@ -76,15 +71,13 @@ public class MainMenuActivity extends FragmentActivity implements ListView.OnIte
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState)
-    {
+    protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }

@@ -29,11 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
-public class Api
-{
+public class Api {
     public final static String TAG = "EpitechApi";
     private static RequestQueue queue = null;
 
@@ -42,40 +38,31 @@ public class Api
      *
      * @param context
      */
-    public static void reset(Context context)
-    {
+    public static void reset(Context context) {
         Api.queue = Volley.newRequestQueue(context);
     }
 
-    public static void reset()
-    {
+    public static void reset() {
         Api.queue = null;
     }
 
-    public static void cancelAll()
-    {
-        if (Api.queue != null)
-        {
+    public static void cancelAll() {
+        if (Api.queue != null) {
             Api.queue.cancelAll(TAG);
         }
     }
 
-    private static void doRequest(RequestInfo info, BaseListener listener)
-    {
+    private static void doRequest(RequestInfo info, BaseListener listener) {
         ApiRequest request = info.createRequest(listener);
-        try
-        {
+        try {
             System.err.println("Sending to " + request.getUrl() + ": " + request.getBodyString());
-        }
-        catch (AuthFailureError | UnsupportedEncodingException authFailureError)
-        {
+        } catch (AuthFailureError | UnsupportedEncodingException authFailureError) {
             authFailureError.printStackTrace();
         }
         queue.add(request);
     }
 
-    public static void login(String login, String password, LoginListener listener)
-    {
+    public static void login(String login, String password, LoginListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.LOGIN_URL)
                 .withParam("login", login)
                 .withParam("password", password);
@@ -83,15 +70,13 @@ public class Api
         doRequest(info, listener);
     }
 
-    public static void getInfos(InfosListener listener)
-    {
+    public static void getInfos(InfosListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.INFOS_URL)
                 .withToken();
         doRequest(info, listener);
     }
 
-    public static void getPlanning(Date start, Date end, PlanningListener listener)
-    {
+    public static void getPlanning(Date start, Date end, PlanningListener listener) {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.PLANNING_URL)
@@ -101,14 +86,12 @@ public class Api
         doRequest(info, listener);
     }
 
-    public static void getPlanning(Calendar start, Calendar end, PlanningListener listener)
-    {
+    public static void getPlanning(Calendar start, Calendar end, PlanningListener listener) {
         getPlanning(start.getTime(), end.getTime(), listener);
     }
 
     public static void getSusies(Calendar start, Calendar end, SusieStatus status,
-                                 PlanningListener listener)
-    {
+                                 PlanningListener listener) {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         //String statusValue = status.name().toLowerCase();
 
@@ -120,45 +103,39 @@ public class Api
         doRequest(info, listener);
     }
 
-    public static void getSusies(Calendar start, Calendar end, PlanningListener listener)
-    {
+    public static void getSusies(Calendar start, Calendar end, PlanningListener listener) {
         getSusies(start, end, SusieStatus.ALL, listener);
     }
 
-    public static void getSusie(int id, SusieListener listener)
-    {
+    public static void getSusie(int id, SusieListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.GET, ApiConstants.SUSIE_URL)
                 .withToken()
                 .withParam("id", String.valueOf(id));
         doRequest(info, listener);
     }
 
-    public static void subscribeSusie(int id, EmptyListener listener)
-    {
+    public static void subscribeSusie(int id, EmptyListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.SUSIE_URL)
                 .withToken()
                 .withParam("id", String.valueOf(id));
         doRequest(info, listener);
     }
 
-    public static void unsubscribeSusie(int id, EmptyListener listener)
-    {
+    public static void unsubscribeSusie(int id, EmptyListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.DELETE, ApiConstants.SUSIE_URL)
                 .withToken()
                 .withParam("id", String.valueOf(id));
         doRequest(info, listener);
     }
 
-    public static void getProjects(ProjectsListener listener)
-    {
+    public static void getProjects(ProjectsListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.PROJECTS_URL)
                 .withToken();
         doRequest(info, listener);
     }
 
     public static void getProject(int year, String module, String instance, String activity,
-                                  ProjectListener listener)
-    {
+                                  ProjectListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.GET, ApiConstants.PROJECT_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -169,8 +146,7 @@ public class Api
     }
 
     public static void subscribeProject(int year, String module, String instance, String activity,
-                                        JSONObjectListener listener)
-    {
+                                        JSONObjectListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.PROJECT_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -181,8 +157,7 @@ public class Api
     }
 
     public static void unsubscribeProject(int year, String module, String instance, String activity,
-                                          EmptyListener listener)
-    {
+                                          EmptyListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.DELETE, ApiConstants.PROJECT_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -193,8 +168,7 @@ public class Api
     }
 
     public static void getProjectFiles(int year, String module, String instance, String activity,
-                                       JSONObjectListListener listener)
-    {
+                                       JSONObjectListListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.DELETE, ApiConstants.PROJECT_FILES_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -204,16 +178,14 @@ public class Api
         doRequest(info, listener);
     }
 
-    public static void getModules(ModulesListener listener)
-    {
+    public static void getModules(ModulesListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.MODULES_URL)
                 .withToken();
         doRequest(info, listener);
     }
 
     public static void getAllModules(int year, String location, String course,
-                                     ModulesListener listener)
-    {
+                                     ModulesListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.GET, ApiConstants.ALL_MODULES_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -222,8 +194,7 @@ public class Api
         doRequest(info, listener);
     }
 
-    public static void getModule(int year, String module, String instance, ModuleListener listener)
-    {
+    public static void getModule(int year, String module, String instance, ModuleListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.GET, ApiConstants.MODULE_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -233,8 +204,7 @@ public class Api
     }
 
     public static void subscribeModule(int year, String module, String instance,
-                                       JSONObjectListener listener)
-    {
+                                       JSONObjectListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.MODULE_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -244,8 +214,7 @@ public class Api
     }
 
     public static void unsubscribeModule(int year, String module, String instance,
-                                         JSONObjectListener listener)
-    {
+                                         JSONObjectListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.DELETE, ApiConstants.MODULE_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -255,8 +224,7 @@ public class Api
     }
 
     public static void getEvent(int year, String module, String instance, String activity,
-                                String event, EventListener listener)
-    {
+                                String event, EventListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.GET, ApiConstants.EVENT_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -268,8 +236,7 @@ public class Api
     }
 
     public static void subscribeEvent(int year, String module, String instance, String activity,
-                                      String event, EmptyListener listener)
-    {
+                                      String event, EmptyListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.EVENT_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -281,8 +248,7 @@ public class Api
     }
 
     public static void unsubscribeEvent(int year, String module, String instance, String activity,
-                                        String event, EmptyListener listener)
-    {
+                                        String event, EmptyListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.DELETE, ApiConstants.EVENT_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -293,29 +259,25 @@ public class Api
         doRequest(info, listener);
     }
 
-    public static void getMarks(MarksListener listener)
-    {
+    public static void getMarks(MarksListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.MARKS_URL)
                 .withToken();
         doRequest(info, listener);
     }
 
-    public static void getMessages(MessagesListener listener)
-    {
+    public static void getMessages(MessagesListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.GET, ApiConstants.MESSAGES_URL)
                 .withToken();
         doRequest(info, listener);
     }
 
-    public static void getAlerts(AlertsListener listener)
-    {
+    public static void getAlerts(AlertsListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.ALERTS_URL)
                 .withToken();
         doRequest(info, listener);
     }
 
-    public static void getPhoto(String login, PhotoListener listener)
-    {
+    public static void getPhoto(String login, PhotoListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.PHOTO_URL)
                 .withToken()
                 .withParam("login", login);
@@ -323,8 +285,7 @@ public class Api
     }
 
     public static void validateToken(int year, String module, String instance, String activity,
-                                     String token, EmptyListener listener)
-    {
+                                     String token, EmptyListener listener) {
         RequestInfo info = new RequestInfo(ApiRequest.Method.POST, ApiConstants.TOKEN_URL)
                 .withToken()
                 .withParam("scolaryear", String.valueOf(year))
@@ -335,8 +296,7 @@ public class Api
         doRequest(info, listener);
     }
 
-    public static enum SusieStatus
-    {
+    public enum SusieStatus {
         ALL,
         FREE,
         REGISTERED,

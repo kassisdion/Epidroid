@@ -19,16 +19,11 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by hervie_g on 1/26/15.
- */
-public class ApiRequest extends Request<ApiResponse>
-{
+public class ApiRequest extends Request<ApiResponse> {
     private BaseListener listener;
     private Map<String, String> bodyParams = new HashMap<>();
 
-    public ApiRequest(Method method, String url, BaseListener listener)
-    {
+    public ApiRequest(Method method, String url, BaseListener listener) {
         super(method.method, url, listener);
         this.listener = listener;
         listener.request = this;
@@ -36,126 +31,52 @@ public class ApiRequest extends Request<ApiResponse>
         this.setTag(Api.TAG);
     }
 
-    public void setTimeout(int timeout)
-    {
-        this.setRetryPolicy(new DefaultRetryPolicy(timeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    }
-
-    @Override
-    protected void deliverResponse(ApiResponse response)
-    {
-        this.listener.onResponse(response);
-    }
-
-    @Override
-    protected Response<ApiResponse> parseNetworkResponse(NetworkResponse response)
-    {
-        return parseResponse(response);
-    }
-
-    public static Response<ApiResponse> parseResponse(NetworkResponse response)
-    {
-        try
-        {
+    public static Response<ApiResponse> parseResponse(NetworkResponse response) {
+        try {
             String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
 
             ApiResponse res;
-            try
-            {
+            try {
                 JSONObject object = new JSONObject(jsonString);
 
                 checkApiError(object);
 
                 res = ApiResponse.newObject(object);
-            }
-            catch (JSONException _e)
-            {
-                try
-                {
+            } catch (JSONException _e) {
+                try {
                     JSONArray array = new JSONArray(jsonString);
 
                     res = ApiResponse.newArray(array);
-                }
-                catch (JSONException e)
-                {
+                } catch (JSONException e) {
                     return Response.error(new ParseError(e));
                 }
-            }
-            catch (ApiError e)
-            {
+            } catch (ApiError e) {
                 return Response.error(e);
             }
             return Response.success(res, HttpHeaderParser.parseCacheHeaders(response));
-        }
-        catch (UnsupportedEncodingException e)
-        {
+        } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
         }
     }
 
-    private static void checkApiError(JSONObject object) throws ApiError
-    {
+    private static void checkApiError(JSONObject object) throws ApiError {
         JSONObject errorObject = object.optJSONObject("error");
 
-        if (errorObject != null)
-        {
+        if (errorObject != null) {
             throw new ApiError(errorObject);
         }
     }
 
-    public Map<String, String> getBodyParams()
-    {
-        return this.bodyParams;
-    }
-
-    @Override
-    protected Map<String, String> getParams() throws AuthFailureError
-    {
-        return this.getBodyParams();
-    }
-
-    @Override
-    public byte[] getBody() throws AuthFailureError
-    {
-        try
-        {
-            String body = getBodyString();
-            if (body != null)
-            {
-                return body.getBytes(getParamsEncoding());
-            }
-
-            return null;
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            throw new RuntimeException("Encoding not supported: " + getParamsEncoding(), e);
-        }
-    }
-
-    public String getBodyString() throws AuthFailureError, UnsupportedEncodingException
-    {
-        Map<String, String> params = getParams();
-        if (params != null && !params.isEmpty())
-        {
-            return encodeParams(params, getParamsEncoding());
-        }
-        return null;
-    }
-
     private static String encodeParams(Map<String, String> params,
-                                       String encoding) throws UnsupportedEncodingException
-    {
+                                       String encoding) throws UnsupportedEncodingException {
         StringBuilder buf = new StringBuilder();
 
         boolean first = true;
-        for (Map.Entry<String, String> entry : params.entrySet())
-        {
+        for (Map.Entry<String, String> entry : params.entrySet()) {
             String key = URLEncoder.encode(entry.getKey(), encoding);
             String value = URLEncoder.encode(entry.getValue(), encoding);
 
-            if (!first)
-            {
+            if (!first) {
                 buf.append('&');
             }
             buf.append(key);
@@ -167,8 +88,52 @@ public class ApiRequest extends Request<ApiResponse>
         return buf.toString();
     }
 
-    public static enum Method
-    {
+    public void setTimeout(int timeout) {
+        this.setRetryPolicy(new DefaultRetryPolicy(timeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+    }
+
+    @Override
+    protected void deliverResponse(ApiResponse response) {
+        this.listener.onResponse(response);
+    }
+
+    @Override
+    protected Response<ApiResponse> parseNetworkResponse(NetworkResponse response) {
+        return parseResponse(response);
+    }
+
+    public Map<String, String> getBodyParams() {
+        return this.bodyParams;
+    }
+
+    @Override
+    protected Map<String, String> getParams() throws AuthFailureError {
+        return this.getBodyParams();
+    }
+
+    @Override
+    public byte[] getBody() throws AuthFailureError {
+        try {
+            String body = getBodyString();
+            if (body != null) {
+                return body.getBytes(getParamsEncoding());
+            }
+
+            return null;
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException("Encoding not supported: " + getParamsEncoding(), e);
+        }
+    }
+
+    public String getBodyString() throws AuthFailureError, UnsupportedEncodingException {
+        Map<String, String> params = getParams();
+        if (params != null && !params.isEmpty()) {
+            return encodeParams(params, getParamsEncoding());
+        }
+        return null;
+    }
+
+    public enum Method {
         GET(Request.Method.GET),
         POST(Request.Method.POST),
         DELETE(Request.Method.DELETE),
@@ -176,30 +141,22 @@ public class ApiRequest extends Request<ApiResponse>
 
         public int method;
 
-        Method(int method)
-        {
+        Method(int method) {
             this.method = method;
         }
     }
 
-    public static class ApiError extends VolleyError
-    {
+    public static class ApiError extends VolleyError {
         public final JSONObject error;
 
-        public ApiError(JSONObject error)
-        {
+        public ApiError(JSONObject error) {
             super(buildErrorMessage(error));
             this.error = error;
         }
 
-        private static String buildErrorMessage(JSONObject error)
-        {
-            StringBuilder buf = new StringBuilder();
+        private static String buildErrorMessage(JSONObject error) {
 
-            buf.append("API error (code ").append(error.optInt("code"));
-            buf.append("): ").append(error.optString("message"));
-
-            return buf.toString();
+            return "API error (code " + error.optInt("code") + "): " + error.optString("message");
         }
     }
 }

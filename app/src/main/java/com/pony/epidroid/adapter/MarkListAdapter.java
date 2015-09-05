@@ -12,9 +12,6 @@ import com.pony.epidroid.api.data.MarkEntry;
 
 import java.util.List;
 
-/**
- * Created by Aude on 03/02/15.
- */
 public class MarkListAdapter extends BaseAdapter {
 
     private final LayoutInflater mInflater;
@@ -51,7 +48,8 @@ public class MarkListAdapter extends BaseAdapter {
             holder.value = (TextView) convertView.findViewById(R.id.list_marks_date);
             holder.position = position;
             convertView.setTag(holder);
-        } else {
+        }
+        else {
             holder = (ViewHolder) convertView.getTag();
         }
 

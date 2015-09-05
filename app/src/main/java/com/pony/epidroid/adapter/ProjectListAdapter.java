@@ -13,9 +13,6 @@ import com.pony.epidroid.api.data.ProjectEntry;
 
 import java.util.List;
 
-/**
- * Created by faisan_f on 03/02/2015.
- */
 public class ProjectListAdapter extends BaseAdapter {
 
     private final LayoutInflater mInflater;
@@ -53,7 +50,8 @@ public class ProjectListAdapter extends BaseAdapter {
             holder.registered = (ImageView) convertView.findViewById(R.id.list_project_registered);
             holder.position = position;
             convertView.setTag(holder);
-        } else {
+        }
+        else {
             holder = (ViewHolder) convertView.getTag();
         }
 
@@ -63,7 +61,8 @@ public class ProjectListAdapter extends BaseAdapter {
         holder.titleModule.setText(currentEntry.titleModule);
         if (currentEntry.registered) {
             holder.registered.setImageResource(R.drawable.ic_registered);
-        } else {
+        }
+        else {
             holder.registered.setImageResource(R.drawable.ic_not_registered);
         }
         return convertView;

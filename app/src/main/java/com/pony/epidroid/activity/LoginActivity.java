@@ -1,9 +1,11 @@
 package com.pony.epidroid.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,21 +19,17 @@ import com.pony.epidroid.preferences.PreferencesConstants;
 import com.pony.epidroid.preferences.PreferencesManager;
 import com.pony.epidroid.utils.ActivityHelper;
 
-
-public class LoginActivity extends Activity
-{
+public class LoginActivity extends Activity {
     private static EditText loginTextView = null;
     private static EditText passwordTextView = null;
     private static TextView statusMessageTextView = null;
 
-    public static void start(Activity parent, boolean killParent)
-    {
+    public static void start(Activity parent, boolean killParent) {
         ActivityHelper.startActivity(parent, LoginActivity.class, killParent);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -52,28 +50,28 @@ public class LoginActivity extends Activity
         final String savedLogin = prefs.getPrefs().getString(PreferencesConstants.TAG_LOGIN, null);
         final String savedPassword = prefs.getPrefs().getString(PreferencesConstants.TAG_PASSWORD, null);
 
-        if (savedLogin != null && savePassword)
-        {
+        if (savedLogin != null && savePassword) {
             loginTextView.setText(savedLogin);
         }
-        if (savedPassword != null && savePassword)
-        {
+        if (savedPassword != null && savePassword) {
             passwordTextView.setText(savedPassword);
         }
 
         Button signInButton = (Button) findViewById(R.id.SignInButton);
-        signInButton.setOnClickListener(new View.OnClickListener()
-        {
+        signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if (loginTextView.getText().toString().isEmpty())
-                {
+            public void onClick(View v) {
+                final View view = getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+
+                if (loginTextView.getText().toString().isEmpty()) {
                     statusMessageTextView.setText(R.string.login_error);
                     return;
                 }
-                if (passwordTextView.getText().toString().isEmpty())
-                {
+                if (passwordTextView.getText().toString().isEmpty()) {
                     statusMessageTextView.setText(R.string.password_error);
                     return;
                 }
@@ -82,11 +80,9 @@ public class LoginActivity extends Activity
                 final String login = loginTextView.getText().toString();
                 final String password = passwordTextView.getText().toString();
 
-                Api.login(login, password, new LoginListener()
-                {
+                Api.login(login, password, new LoginListener() {
                     @Override
-                    public void onSuccess(String token)
-                    {
+                    public void onSuccess(String token) {
                         ApiData.token = token;
                         ApiData.login = login;
                         prefs.saveLoginData(login, password);
@@ -94,8 +90,7 @@ public class LoginActivity extends Activity
                     }
 
                     @Override
-                    public void onError(VolleyError error)
-                    {
+                    public void onError(VolleyError error) {
                         statusMessageTextView.setText(R.string.connection_error);
                     }
                 });

@@ -5,11 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by faisan_f on 03/02/2015.
- */
-public class DateManager
-{
+public class DateManager {
     private final static String dateFormat = "yyyy-MM-dd HH:mm:ss";
     private int month;
     private int day;
@@ -18,11 +14,9 @@ public class DateManager
     private int minutes;
     private int secondes;
 
-    public DateManager(String fullDate)
-    {
+    public DateManager(String fullDate) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
-        try
-        {
+        try {
             Date date = simpleDateFormat.parse(fullDate);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
@@ -33,22 +27,17 @@ public class DateManager
             hours = calendar.get(Calendar.HOUR_OF_DAY);
             minutes = calendar.get(Calendar.MINUTE);
             secondes = calendar.get(Calendar.SECOND);
-        }
-        catch (ParseException e)
-        {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
 
-    public final String dateToString()
-    {
+    public final String dateToString() {
         return (getDayString() + " " + day + " " + getMonthString() + " ") + year;
     }
 
-    public final String getMonthString()
-    {
-        switch (month)
-        {
+    public final String getMonthString() {
+        switch (month) {
             case Calendar.JANUARY:
                 return "Janvier";
             case Calendar.FEBRUARY:
@@ -77,10 +66,8 @@ public class DateManager
         return "";
     }
 
-    public final String getDayString()
-    {
-        switch (day)
-        {
+    public final String getDayString() {
+        switch (day) {
             case Calendar.SUNDAY:
                 return "Limanche";
             case Calendar.MONDAY:
@@ -99,43 +86,34 @@ public class DateManager
         return "";
     }
 
-    public int getSecondes()
-    {
+    public int getSecondes() {
         return secondes;
     }
 
-    public int getMinutes()
-    {
+    public int getMinutes() {
         return minutes;
     }
 
-    public int getHours()
-    {
+    public int getHours() {
         return hours;
     }
 
-    public String getHourString()
-    {
-        if (hours < 10)
-        {
+    public String getHourString() {
+        if (hours < 10) {
             return ("0" + hours);
         }
         return "" + hours;
     }
 
-    public String getMinutesString()
-    {
-        if (minutes < 10)
-        {
+    public String getMinutesString() {
+        if (minutes < 10) {
             return ("0" + minutes);
         }
         return "" + minutes;
     }
 
-    public String getSecondesString()
-    {
-        if (secondes < 10)
-        {
+    public String getSecondesString() {
+        if (secondes < 10) {
             return ("0" + secondes);
         }
         return "" + secondes;

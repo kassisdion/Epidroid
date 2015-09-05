@@ -6,9 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by hervie_g on 2/3/15.
- */
 public class CalendarUtils {
     public final static String IN_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public final static String OUT_DATE_FORMAT = "EEEE dd MMMM yyyy";
